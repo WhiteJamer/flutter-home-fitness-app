@@ -1,27 +1,35 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'enums/colors.enums.dart';
+import 'screens/home.page.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Home Fitness',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+        fontFamily: "Oswald",
+        textTheme: TextTheme(button: TextStyle(fontSize: 22)),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            textStyle: TextStyle(fontSize: 30, letterSpacing: 0),
+            padding: EdgeInsets.symmetric(vertical: 32, horizontal: 22),
+            primary: BackgroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(11)),
+              side: BorderSide(
+                width: 4.0,
+                color: PrimaryColor,
+              ),
+            ),
+          ),
+        ),
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),
@@ -29,41 +37,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // TRANSPARENT BACKGROUND
-        title: Text("Home Page"),
-        actions: [
-          // NOTIFICATIONS ICON SVG.
-          // EDIT ICON SVG
-        ],
-      ),
-      body: Column(children: [
-        // SvgLogo
-        ElevatedButton(
-          onPressed: () {},
-          child: Row(
-            children: [
-              Text("START A FITNESS"),
-              // Arrow Right Icon SVG
-            ],
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {},
-          child: Row(
-            children: [
-              Text("CHANGE A PROGRAM"),
-              // EDIT PENCIL Icon SVG
-            ],
-          ),
-        ),
-      ]),
-    );
-  }
-}
