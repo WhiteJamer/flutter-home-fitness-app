@@ -15,7 +15,12 @@ class App extends StatelessWidget {
       title: 'Home Fitness',
       theme: ThemeData(
         fontFamily: "Oswald",
-        textTheme: TextTheme(button: TextStyle(fontSize: 22)),
+        textTheme: TextTheme(
+          bodyText2: TextStyle(
+            color: WhiteColor,
+            fontSize: 52,
+          ),
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             textStyle: TextStyle(fontSize: 30, letterSpacing: 0),
@@ -36,5 +41,3 @@ class App extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:myapp/enums/colors.enums.dart';
+import 'package:myapp/screens/stepshow.page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    void _startAFitness() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => StepShowPage(),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: BackgroundColor,
       body: Stack(
@@ -51,7 +61,7 @@ class HomePage extends StatelessWidget {
                   height: 30,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: _startAFitness,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -73,7 +83,7 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("CHANGE A PROGRAM"),
+                      Text("CHANGE A PROGRAM",),
                       SvgPicture.asset(
                         "assets/icons/pencil.svg",
                         color: PrimaryColor,
