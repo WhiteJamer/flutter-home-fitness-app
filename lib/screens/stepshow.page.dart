@@ -15,13 +15,14 @@ class StepShowPage extends StatefulWidget {
 class _StepShowPageState extends State<StepShowPage>
     with TickerProviderStateMixin {
   late AnimationController _separatorAnimController;
-  late AnimationController _titleAnimController;
-  late AnimationController _twinkAnimController;
-  bool _isRenderStepper = false;
-
   late Animation _separatorAnimation;
+
+  late AnimationController _titleAnimController;
   late Animation<Offset> _titleAnimation;
   late Animation<double> _titleOpacityAnimation;
+  
+  late AnimationController _twinkAnimController;
+
 
   @override
   void initState() {

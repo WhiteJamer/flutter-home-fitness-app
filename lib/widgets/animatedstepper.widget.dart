@@ -13,7 +13,6 @@ class AnimatedStepper extends StatefulWidget {
 class _AnimatedStepperState extends State<AnimatedStepper>
     with TickerProviderStateMixin {
   late AnimationController _twinkAnimController;
-  late Animation _twinkAnimation;
 
   late AnimationController _slideAnimController;
   late Animation<Offset> _slideAnimation;
@@ -30,8 +29,6 @@ class _AnimatedStepperState extends State<AnimatedStepper>
       vsync: this,
       duration: Duration(milliseconds: 500),
     );
-    _twinkAnimation =
-        CurvedAnimation(parent: _twinkAnimController, curve: Curves.easeInOut);
 
     _slideAnimation = Tween<Offset>(
       begin: Offset(0.0, -1.0),
