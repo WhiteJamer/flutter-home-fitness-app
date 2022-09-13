@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:myapp/enums/colors.enums.dart';
-import 'package:myapp/screens/home.page.dart';
+import 'package:myapp/screens/workout.page.dart';
 import 'package:myapp/widgets/animatedstepper.widget.dart';
 
 class StepShowPage extends StatefulWidget {
@@ -18,9 +18,9 @@ class _StepShowPageState extends State<StepShowPage>
   late Animation _separatorAnimation;
 
   late AnimationController _titleAnimController;
-  late Animation<Offset> _titleAnimation;
-  late Animation<double> _titleOpacityAnimation;
-  
+  late Animation<Offset> _slideToTopAnimation;
+  late Animation<double> _opacityAnimation;
+
   late AnimationController _twinkAnimController;
 
 
@@ -45,21 +45,21 @@ class _StepShowPageState extends State<StepShowPage>
           () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => HomePage(),
+              builder: (context) => WorkoutPage(),
             ),
           ),
         );
       }),
     );
 
-    _titleAnimation = Tween<Offset>(
+    _slideToTopAnimation = Tween<Offset>(
       begin: Offset(0.0, 1.0),
       end: Offset(0.0, 0.0),
     ).animate(CurvedAnimation(
       parent: _titleAnimController,
       curve: Curves.easeOut,
     ));
-    _titleOpacityAnimation = Tween<double>(
+    _opacityAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
     ).animate(CurvedAnimation(
@@ -101,12 +101,12 @@ class _StepShowPageState extends State<StepShowPage>
 
   AnimatedBuilder _renderTitle() {
     return AnimatedBuilder(
-      animation: _titleOpacityAnimation,
+      animation: _opacityAnimation,
       builder: (context, child) {
         return Opacity(
-          opacity: _titleOpacityAnimation.value,
+          opacity: _opacityAnimation.value,
           child: SlideTransition(
-            position: _titleAnimation,
+            position: _slideToTopAnimation,
             child: Text(
               "PUSH UPS",
               style: TextStyle(height: 1),
