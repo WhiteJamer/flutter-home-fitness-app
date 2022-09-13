@@ -16,9 +16,17 @@ class App extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "Oswald",
         textTheme: TextTheme(
+          headline1: TextStyle(
+            color: WhiteColor,
+            fontSize: 64,
+          ),
+          headline2: TextStyle(
+            color: WhiteColor,
+            fontSize: 42,
+          ),
           bodyText2: TextStyle(
             color: WhiteColor,
-            fontSize: 52,
+            fontSize: 48,
           ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
