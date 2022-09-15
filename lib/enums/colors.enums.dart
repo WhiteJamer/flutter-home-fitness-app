@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-final Color BackgroundColor = Color(0xFF263238);
-final Color PrimaryColor = Color(0xFFFFD200);
-final Color SecondaryColor = Color(0xFFFFBB33);
-final Color WhiteColor = Color(0xFFFAFAFA);
+const Color BackgroundColor = Color(0xFF263238);
+const Color PrimaryColor = Color(0xFFFFD200);
+const Color SecondaryColor = Color(0xFFF5A300);
+const Color WhiteColor = Color(0xFFFAFAFA);
+
+const Color PrimaryButtonColor = SecondaryColor;
+const Color PrimaryButtonBorderColor = Color(0xFFCE8A02);
