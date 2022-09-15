@@ -121,6 +121,8 @@ class _StepShowPageState extends State<StepShowPage>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         color: BackgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
