@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:myapp/enums/colors.enums.dart';
+import 'package:myapp/screens/program.dart';
 import 'package:myapp/screens/stepshow.page.dart';
 import 'package:myapp/utils/svg.utils.dart';
 import 'package:myapp/widgets/button.widget.dart';
@@ -49,6 +50,14 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
       );
     }
+    void _changeAProgram() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProgramPage(),
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: BackgroundColor,
@@ -72,7 +81,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
             Positioned(
                 top: MediaQuery.of(context).size.height /
                     _rightDBellPositionAnimation.value,
-                right: MediaQuery.of(context).size.width / 5 - 15,
+                right: MediaQuery.of(context).size.width / 5 - 7,
                 child: Transform.rotate(
                   angle: -pi / 5,
                   child: SvgPicture.asset("assets/dumbbell.svg"),
@@ -105,7 +114,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 SizedBox(
                   height: 30,
                 ),
-                Button(text: "CHANGE PROGRAM", cb: _startAFitness),
+                Button(text: "CHANGE PROGRAM", cb: _changeAProgram),
               ],
             ),
           ],
