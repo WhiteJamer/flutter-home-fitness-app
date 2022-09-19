@@ -32,7 +32,7 @@ class _WorkoutPageState extends State<WorkoutPage>
     super.initState();
     _separatorAnimController = AnimationController(
         vsync: this, duration: Duration(milliseconds: 1000));
-    _separatorAnimation = Tween(begin: 0.0, end: 80.0).animate(CurvedAnimation(
+    _separatorAnimation = Tween(begin: 0.0, end: 120.0).animate(CurvedAnimation(
         parent: _separatorAnimController, curve: Curves.easeIn));
 
     _textAnimController =
@@ -88,7 +88,7 @@ class _WorkoutPageState extends State<WorkoutPage>
 
   Padding _renderSeparator() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 22),
+      padding: EdgeInsets.only(top: 12),
       child: AnimatedBuilder(
         animation: _separatorAnimation,
         builder: (context, child) {
@@ -159,7 +159,7 @@ class _WorkoutPageState extends State<WorkoutPage>
                                 Text(
                                   "15",
                                   style: TextStyle(
-                                      color: SecondaryColor,
+                                      color: PrimaryColor,
                                       fontSize: Theme.of(context)
                                           .textTheme
                                           .headline1

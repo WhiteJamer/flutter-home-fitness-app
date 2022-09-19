@@ -67,7 +67,7 @@ class _ButtonState extends State<Button> {
                 boxShadow: !isPressed
                     ? [
                         BoxShadow(
-                          color: Color(0xFFCE8A02),
+                          color: PrimaryButtonBorderColor,
                           spreadRadius: 0.5,
                           // offset to act as bottom border color
                           offset: Offset(0, (height * 0.1)),

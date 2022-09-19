@@ -21,15 +21,27 @@ SvgPicture renderNotificationIcon(
 SvgPicture renderSettingsIcon([Color color = WhiteColor, double width = 50]) {
   return SvgPicture.asset(
     "assets/icons/settings.svg",
-    color: WhiteColor,
-    width: 50,
+    color: color,
+    width: width,
   );
 }
 
-SvgPicture renderArrowRightIcon([Color color = WhiteColor, double width = 50]) {
+SvgPicture renderArrowRightIcon({Color color = WhiteColor, double width = 50}) {
   return SvgPicture.asset(
     "assets/icons/arrow-right.svg",
-    color: WhiteColor,
-    width: 50,
+    color: color,
+    width: width,
+  );
+}
+
+RotatedBox renderArrowLeftIcon({Color color = WhiteColor, double width = 50}) {
+  return RotatedBox(
+    quarterTurns: 90,
+    child: SvgPicture.asset(
+      "assets/icons/arrow-right.svg",
+      color: color,
+      width: width,
+      height: width,
+    ),
   );
 }

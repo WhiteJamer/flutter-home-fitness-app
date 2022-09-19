@@ -109,7 +109,7 @@ class _StepShowPageState extends State<StepShowPage>
             position: _slideToTopAnimation,
             child: Text(
               "PUSH UPS",
-              style: TextStyle(height: 1),
+              style: Theme.of(context).textTheme.headline2?.copyWith(height: 1),
             ),
           ),
         );

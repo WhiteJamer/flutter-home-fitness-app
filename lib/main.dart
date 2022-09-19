@@ -22,28 +22,13 @@ class App extends StatelessWidget {
           ),
           headline2: TextStyle(
             color: WhiteColor,
-            fontSize: 42,
+            fontSize: 48,
           ),
           bodyText2: TextStyle(
             color: WhiteColor,
-            fontSize: 48,
+            fontSize: 26,
           ),
         ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            textStyle: TextStyle(fontSize: 30, letterSpacing: 0),
-            padding: EdgeInsets.symmetric(vertical: 32, horizontal: 22),
-            primary: BackgroundColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(11)),
-              side: BorderSide(
-                width: 4.0,
-                color: PrimaryColor,
-              ),
-            ),
-          ),
-        ),
-        primarySwatch: Colors.blue,
       ),
       home: HomePage(),
       // home: CongratsPage(),
