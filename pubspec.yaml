@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.1.4
   lottie: ^1.4.2
+  drag_and_drop_lists: ^0.3.3
+  flutter_reorderable_list: ^1.2.0
+  flutter_swipe_action_cell: ^3.0.4
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:
