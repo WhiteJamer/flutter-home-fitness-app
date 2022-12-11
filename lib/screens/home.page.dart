@@ -3,7 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:myapp/enums/colors.enums.dart';
-import 'package:myapp/screens/program.dart';
+import 'package:myapp/screens/program.page.dart';
+import 'package:myapp/screens/settings.page.dart';
 import 'package:myapp/screens/stepshow.page.dart';
 import 'package:myapp/utils/svg.utils.dart';
 import 'package:myapp/widgets/button.widget.dart';
@@ -50,6 +51,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
       );
     }
+
     void _changeAProgram() {
       Navigator.push(
         context,
@@ -93,12 +95,21 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Button(
+                    disabled: true,
                     icon: renderNotificationIcon(),
                   ),
                   SizedBox(
                     width: 12,
                   ),
                   Button(
+                    cb: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SettingsPage(),
+                        ),
+                      );
+                    },
                     icon: renderSettingsIcon(),
                   ),
                 ],

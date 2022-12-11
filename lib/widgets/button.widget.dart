@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:myapp/enums/colors.enums.dart';
 
 class Button extends StatefulWidget {
-  const Button({Key? key, void Function, this.text, this.icon, this.cb})
+  const Button({Key? key, void Function, this.text, this.icon, this.cb, this.width, this.disabled = false})
       : super(key: key);
   final String? text;
   final Widget? icon;
+  final double? width;
+  final bool disabled;
   final void Function()? cb;
 
   @override
@@ -60,14 +62,15 @@ class _ButtonState extends State<Button> {
           children: [
             Container(
               height: height,
+              width: widget.width,
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: SecondaryColor,
+                color: widget.disabled == false ? SecondaryColor : BackgroundColor,
                 boxShadow: !isPressed
                     ? [
                         BoxShadow(
-                          color: PrimaryButtonBorderColor,
+                          color: widget.disabled == false ?  PrimaryButtonBorderColor : BackgroundColor,
                           spreadRadius: 0.5,
                           // offset to act as bottom border color
                           offset: Offset(0, (height * 0.1)),

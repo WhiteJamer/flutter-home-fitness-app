@@ -1,32 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:myapp/enums/colors.enums.dart';
+import 'package:myapp/models/controls.model.dart';
 import 'package:myapp/models/program.model.dart';
+import 'package:myapp/repositories/program.repository.dart';
 import 'package:myapp/utils/svg.utils.dart';
+import 'package:myapp/widgets/number-picker.widget.dart';
+import 'package:myapp/widgets/time-field.widget.dart';
 
 const duration = Duration(milliseconds: 300);
 
 enum Mode { CREATE, EDIT }
 
 class ProgramFormPage extends StatefulWidget {
-  const ProgramFormPage({Key? key, required this.mode, this.program})
+  ProgramFormPage({Key? key, required this.mode, this.program})
       : super(key: key);
   final Mode mode;
   final Program? program;
+  final programRepository = ProgramRepository();
 
   @override
   State<ProgramFormPage> createState() => ProgramFormPageState();
 }
 
 class ProgramFormPageState extends State<ProgramFormPage> {
+  int interval = 0;
+  int times = 0;
   @override
   void initState() {
+    setState(() {
+      interval =
+          widget.program?.interval != null ? widget.program!.interval : 0;
+      times = widget.program?.times != null ? widget.program!.times : 0;
+    });
     super.initState();
   }
 
   @override
   void dispose() {
     super.dispose();
+  }
+
+  final List<TimeFieldOptionModel> cooldownOptions = [
+    TimeFieldOptionModel(name: "30s", seconds: 30, suffixText: "s"),
+    TimeFieldOptionModel(name: "1m", seconds: 60, suffixText: "m"),
+    TimeFieldOptionModel(name: "2m", seconds: 120, suffixText: "m"),
+  ];
+
+  void onChangeTimes(int value) {
+    print(value);
+  }
+
+  void onChangeInterval(int seconds) {
+    print(seconds);
   }
 
   @override
@@ -83,35 +109,24 @@ class ProgramFormPageState extends State<ProgramFormPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  children: [
-                    Text(
-                      style:
-                          TextStyle(color: WhiteColor, fontSize: 12, height: 1),
-                      "TIMES",
-                    ),
-                    Text(
-                      "15",
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ],
+                // здесь нужно переделать на dropdown или textfield
+                TimeField(
+                  label: "INTERVAL",
+                  options: cooldownOptions,
+                  onChange: onChangeInterval,
+                  initialValue: widget.program?.interval,
                 ),
                 SizedBox(
                   width: 24,
                 ),
-                Column(
-                  children: [
-                    Text(
-                      style:
-                          TextStyle(color: WhiteColor, fontSize: 12, height: 1),
-                      "COOLDOWN",
-                    ),
-                    Text(
-                      "30s",
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ],
-                ),
+                NumberPicker(
+                  label: "TIMES'",
+                  onChange: onChangeTimes,
+                  minValue: 5,
+                  maxValue: 1000,
+                  step: 5,
+                  initialValue: widget.program?.times,
+                )
               ],
             ),
             SizedBox(
@@ -125,7 +140,7 @@ class ProgramFormPageState extends State<ProgramFormPage> {
                     Text(
                       style:
                           TextStyle(color: WhiteColor, fontSize: 12, height: 1),
-                      "REPETITIONS",
+                      "REPEATS",
                     ),
                     Text(
                       "5",
@@ -140,10 +155,10 @@ class ProgramFormPageState extends State<ProgramFormPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.send),
         elevation: 0,
         backgroundColor: SecondaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        child: Icon(Icons.send),
       ),
     );
   }

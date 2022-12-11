@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:myapp/enums/colors.enums.dart';
 import 'package:myapp/enums/program.enums.dart';
 import 'package:myapp/models/program.model.dart';
+import 'package:myapp/repositories/program.repository.dart';
 import 'package:myapp/screens/program-form.page.dart';
 import 'package:myapp/utils/svg.utils.dart';
 
@@ -20,6 +21,7 @@ class ProgramPage extends StatefulWidget {
 class ProgramPageState extends State<ProgramPage> {
   bool _showFab = false;
   List<Program> _items = [];
+  final ProgramRepository programRepository = ProgramRepository();
 
   bool _onReorder(int oldIndex, int newIndex) {
     setState(() {
@@ -27,6 +29,7 @@ class ProgramPageState extends State<ProgramPage> {
       final item = _items.removeAt(oldIndex);
       _items.insert(index, item);
     });
+
     return true;
   }
 
@@ -170,16 +173,18 @@ class ProgramPageState extends State<ProgramPage> {
     return List.generate(
         10,
         (index) => Program(
+            serialNumber: index,
             type:
                 (index % 2) == 0 ? ExerciseType.PullUps : ExerciseType.PushUps,
-            interval: 0.30,
-            quantity: 15));
+            interval: 30,
+            quantity: 15, times: 50));
   }
 
   @override
   void initState() {
     super.initState();
     _items = _getItems();
+    programRepository.setPrograms(_items);
   }
 
   @override
